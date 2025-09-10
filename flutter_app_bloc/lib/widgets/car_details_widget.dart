@@ -50,17 +50,17 @@ class CarDetailsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Brand: ${car.brand}',
+            'Marca: ${car.brand}',
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Text(
-            'Model: ${car.model}',
+            'Modelo: ${car.model}',
             style: const TextStyle(fontSize: 18),
           ),
           const SizedBox(height: 8),
           Text(
-            'Year: ${car.year}',
+            'Año: ${car.year}',
             style: const TextStyle(fontSize: 18),
           ),
         ],

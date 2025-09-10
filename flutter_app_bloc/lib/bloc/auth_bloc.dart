@@ -17,7 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     await Future.delayed(const Duration(seconds: 2));
 
     if (event.username == 'error') {
-      emit(const AuthError('Invalid credentials'));
+      emit(const AuthError('Credenciales inválidas'));
     } else {
       emit(AuthSuccess());
     }

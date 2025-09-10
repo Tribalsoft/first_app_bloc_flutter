@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('Iniciar Sesión'),
       ),
       body: BlocListener<AuthBloc, AuthState>(
         listenWhen: (previous, current) =>

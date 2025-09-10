@@ -27,7 +27,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       final car = Car.fromJson(carData);
       emit(CarLoaded(car));
     } catch (e) {
-      emit(CarError('Failed to load car details'));
+      emit(CarError('Error al cargar los detalles del vehículo'));
     }
   }
 }

@@ -15,11 +15,11 @@ class LoginDebugValues extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Debug - Usuario: $username',
+          'Depuración - Usuario: $username',
           style: const TextStyle(color: Colors.grey),
         ),
         Text(
-          'Debug - Contraseña: $password',
+          'Depuración - Contraseña: $password',
           style: const TextStyle(color: Colors.grey),
         ),
       ],

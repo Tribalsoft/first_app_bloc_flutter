@@ -19,7 +19,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => CarBloc()),
       ],
       child: MaterialApp(
-        title: 'Flutter BLoC Demo',
+        title: 'Demo Flutter BLoC',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           useMaterial3: true,
