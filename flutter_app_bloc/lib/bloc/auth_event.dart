@@ -1,4 +1,4 @@
-/// Este archivo define los eventos relacionados con la autenticación
+/// define los eventos relacionados con la autenticación
 /// que pueden ser manejados por el AuthBloc.
 
 import 'package:equatable/equatable.dart';
