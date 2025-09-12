@@ -1,5 +1,4 @@
 /// Widget que muestra los detalles del vehículo en la pantalla principal.
-/// Implementa una lógica optimizada de reconstrucción para mejorar el rendimiento.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
