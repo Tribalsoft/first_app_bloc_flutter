@@ -1,12 +1,6 @@
-/// Define los diferentes estados posibles durante la carga y visualización
-/// de los datos del vehículo. Cada estado representa una situación específica
-/// en el proceso de obtención y muestra de datos.
-
 import 'package:equatable/equatable.dart';
 import '../models/car.dart';
 
-/// Clase base abstracta para todos los estados relacionados con el vehículo.
-/// Implementa Equatable para comparaciones de estado basadas en valor.
 abstract class CarState extends Equatable {
   const CarState();
 

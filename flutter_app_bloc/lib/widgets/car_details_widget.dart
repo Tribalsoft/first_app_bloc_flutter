@@ -1,6 +1,3 @@
-/// Widget que muestra la lista de usuarios obtenida de la API.
-library car_details_widget;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/user_bloc.dart';
@@ -8,8 +5,6 @@ import '../bloc/user_state.dart';
 import '../bloc/user_event.dart';
 import '../models/user.dart';
 
-/// Widget principal para mostrar la lista de usuarios.
-/// Utiliza BlocBuilder para reaccionar a cambios en el estado de UserBloc.
 class CarDetailsWidget extends StatelessWidget {
   const CarDetailsWidget({super.key});
 
@@ -41,7 +36,6 @@ class CarDetailsWidget extends StatelessWidget {
     );
   }
 
-  /// Construye la lista de usuarios con un diseño de tarjetas.
   Widget _buildUserList(List<User> users) {
     return ListView.builder(
       padding: const EdgeInsets.all(8),

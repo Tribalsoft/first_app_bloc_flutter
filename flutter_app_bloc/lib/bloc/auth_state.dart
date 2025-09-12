@@ -1,10 +1,5 @@
-/// Define los diferentes estados posibles durante el proceso de autenticación.
-/// Cada estado representa una situación específica en el flujo de autenticación.
-
 import 'package:equatable/equatable.dart';
 
-/// Clase base abstracta para todos los estados de autenticación.
-/// Implementa Equatable para comparaciones de estado basadas en valor.
 abstract class AuthState extends Equatable {
   const AuthState();
 

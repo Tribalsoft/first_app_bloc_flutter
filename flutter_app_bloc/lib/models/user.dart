@@ -1,7 +1,5 @@
-/// Modelo que representa un usuario de la API
-library user_model;
-
 import 'package:equatable/equatable.dart';
+
 class User extends Equatable {
   final int id;
   final String name;
@@ -17,7 +15,6 @@ class User extends Equatable {
     required this.website,
   });
 
-  /// Método de fábrica para crear una instancia de User desde un Map
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['id'] as int,

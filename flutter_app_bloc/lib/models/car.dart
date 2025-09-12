@@ -1,12 +1,6 @@
-/// Modelo de datos que representa un vehículo en la aplicación.
-/// Contiene la información básica de un automóvil como marca, modelo y año.
-
 import 'package:equatable/equatable.dart';
 
-/// Clase que define la estructura de datos de un vehículo.
-/// Implementa Equatable para comparaciones basadas en valor.
 class Car extends Equatable {
-  /// Marca del vehículo (ej: Tesla, BMW, etc.)
   final String brand;
   
   /// Modelo específico del vehículo (ej: Model S, X5, etc.)

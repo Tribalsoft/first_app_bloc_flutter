@@ -1,10 +1,5 @@
-/// Define los eventos relacionados con la carga y gestión de datos
-/// del vehículo que pueden ser manejados por el CarBloc.
-
 import 'package:equatable/equatable.dart';
 
-/// Clase base abstracta para todos los eventos relacionados con el vehículo.
-/// Extiende de Equatable para permitir comparaciones de igualdad basadas en valor.
 abstract class CarEvent extends Equatable {
   const CarEvent();
 

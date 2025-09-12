@@ -1,11 +1,6 @@
-/// Widget personalizado que representa un campo de texto para el formulario de login.
-/// Proporciona una interfaz consistente para la entrada de usuario y contraseña.
-
 import 'package:flutter/material.dart';
 
-/// Widget que encapsula un TextField con estilo y comportamiento específico para login.
 class LoginTextField extends StatelessWidget {
-  /// Controlador para manejar el texto ingresado
   final TextEditingController controller;
   
   /// Etiqueta que se muestra sobre el campo de texto

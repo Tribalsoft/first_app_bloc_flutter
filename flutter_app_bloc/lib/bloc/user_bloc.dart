@@ -1,6 +1,3 @@
-/// Bloc para manejar la lógica de negocio relacionada con usuarios
-library user_bloc;
-
 import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
