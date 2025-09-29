@@ -12,10 +12,10 @@ class UserInitial extends UserState {}
 
 class UserLoading extends UserState {}
 
-class UserLoaded extends UserState {
+class UsersLoaded extends UserState {
   final List<User> users;
 
-  const UserLoaded(this.users);
+  const UsersLoaded(this.users);
 
   @override
   List<Object> get props => [users];

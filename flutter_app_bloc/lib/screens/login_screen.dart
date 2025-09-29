@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/auth_cubit.dart';
-import '../bloc/auth_state.dart';
+import '../cubit/auth_state.dart';
 import '../widgets/login_text_field.dart';
 import '../widgets/login_debug_values.dart';
 import '../widgets/login_button.dart';

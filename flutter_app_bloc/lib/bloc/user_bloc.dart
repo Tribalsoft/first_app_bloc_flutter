@@ -1,31 +1,38 @@
-import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart' as http;
 import 'user_event.dart';
 import 'user_state.dart';
-import '../models/user.dart';
+import '../services/user_api_service.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-  UserBloc() : super(UserInitial()) {
-    on<LoadUsers>(_onLoadUsers);
+  final UserApiService _userService;
+
+  UserBloc(this._userService) : super(UserInitial()) {
+    on<LoadUsers>(
+      _onLoadUsers,
+      transformer: (events, mapper) =>
+          events.distinct().asyncExpand(mapper).takeWhile((_) => !isClosed),
+    );
   }
 
   Future<void> _onLoadUsers(LoadUsers event, Emitter<UserState> emit) async {
+    if (isClosed) return;
     emit(UserLoading());
-    try {
-      final response = await http.get(
-        Uri.parse('https://jsonplaceholder.typicode.com/users'),
-      );
 
-      if (response.statusCode == 200) {
-        final List<dynamic> jsonList = json.decode(response.body);
-        final List<User> users = jsonList.map((json) => User.fromJson(json)).toList();
-        emit(UserLoaded(users));
-      } else {
-        emit(const UserError('Error al cargar los usuarios'));
+    try {
+      final users = await _userService.getAllUsers();
+      if (!isClosed) {
+        emit(UsersLoaded(users));
       }
     } catch (e) {
-      emit(UserError('Error: ${e.toString()}'));
+      if (!isClosed) {
+        emit(UserError(e.toString()));
+      }
     }
+  }
+
+  @override
+  Future<void> close() {
+    _userService.dispose();
+    return super.close();
   }
 }

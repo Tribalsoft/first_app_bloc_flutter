@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/auth_cubit.dart';
-import 'bloc/car_bloc.dart';
+import 'bloc/user_bloc.dart';
+import 'services/user_api_service.dart';
 import 'screens/login_screen.dart';
 
 void main() {
@@ -13,6 +14,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Creamos una única instancia del servicio
+    final userService = UserApiService();
+
     return MultiBlocProvider(
       providers: [
         // Proveedor para la gestión de autenticación usando Cubit
@@ -20,16 +24,16 @@ class MainApp extends StatelessWidget {
           create: (_) => AuthCubit(),
           lazy: true, // Carga perezosa
         ),
-        // Proveedor para la gestión de datos del vehículo
+        // Proveedor para la gestión de usuarios
         BlocProvider(
-          create: (_) => CarBloc(),
+          create: (_) => UserBloc(userService),
           lazy: true, // Carga perezosa
         ),
       ],
       child: MaterialApp(
         title: 'Demo Flutter BLoC',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           useMaterial3: true, // Habilita Material Design 3
         ),
         home: const LoginScreen(), // Pantalla inicial de login

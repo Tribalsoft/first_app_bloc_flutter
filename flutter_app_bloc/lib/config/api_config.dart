@@ -1,9 +1,7 @@
 class ApiConfig {
-  static const String baseUrl =
-      'https://api.ejemplo.com'; // Cambia esto por tu URL real
-  static const String carsEndpoint = '/cars';
+  static const String baseUrl = 'https://jsonplaceholder.typicode.com';
+  static const String users = '/users';
 
-  // Headers comunes para las peticiones
   static const Map<String, String> headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',

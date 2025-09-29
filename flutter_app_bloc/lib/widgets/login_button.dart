@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/auth_cubit.dart';
-import '../bloc/auth_state.dart';
+import '../cubit/auth_state.dart';
 
 class LoginButton extends StatelessWidget {
   final String username;
