@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/auth_bloc.dart';
+import '../cubit/auth_cubit.dart';
 import '../bloc/auth_state.dart';
-import '../bloc/auth_event.dart';
 
 class LoginButton extends StatelessWidget {
   final String username;
@@ -16,7 +15,7 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
+    return BlocBuilder<AuthCubit, AuthState>(
       // Solo reconstruye el widget cuando cambia el estado de loading
       buildWhen: (previous, current) =>
           previous is AuthLoading != current is AuthLoading,
@@ -29,11 +28,9 @@ class LoginButton extends StatelessWidget {
         return ElevatedButton(
           onPressed: () {
             // Dispara el evento de login con las credenciales
-            context.read<AuthBloc>().add(
-                  LoginSubmitted(
-                    username: username,
-                    password: password,
-                  ),
+            context.read<AuthCubit>().login(
+                  username,
+                  password,
                 );
           },
           child: const Text('Acceder'),

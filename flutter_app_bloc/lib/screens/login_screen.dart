@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/auth_bloc.dart';
+import '../cubit/auth_cubit.dart';
 import '../bloc/auth_state.dart';
 import '../widgets/login_text_field.dart';
 import '../widgets/login_debug_values.dart';
@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: const Text('Iniciar Sesión'),
       ),
-      body: BlocListener<AuthBloc, AuthState>(
+      body: BlocListener<AuthCubit, AuthState>(
         listenWhen: (previous, current) =>
             current is AuthSuccess || current is AuthError,
         listener: (context, state) {
