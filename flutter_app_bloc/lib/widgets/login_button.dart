@@ -28,10 +28,7 @@ class LoginButton extends StatelessWidget {
         return ElevatedButton(
           onPressed: () {
             // Dispara el evento de login con las credenciales
-            context.read<AuthCubit>().login(
-                  username,
-                  password,
-                );
+            context.read<AuthCubit>().login(username, password);
           },
           child: const Text('Acceder'),
         );

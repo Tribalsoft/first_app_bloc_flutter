@@ -30,9 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Iniciar Sesión'),
-      ),
+      appBar: AppBar(title: const Text('Iniciar Sesión')),
       body: BlocListener<AuthCubit, AuthState>(
         listenWhen: (previous, current) =>
             current is AuthSuccess || current is AuthError,
@@ -42,9 +40,9 @@ class _LoginScreenState extends State<LoginScreen> {
               MaterialPageRoute(builder: (_) => const MainScreen()),
             );
           } else if (state is AuthError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.message)));
           }
         },
         child: SingleChildScrollView(
@@ -65,15 +63,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 onChanged: (value) => setState(() => _password = value),
               ),
               const SizedBox(height: 24),
-              LoginDebugValues(
-                username: _username,
-                password: _password,
-              ),
+              LoginDebugValues(username: _username, password: _password),
               const SizedBox(height: 24),
-              LoginButton(
-                username: _username,
-                password: _password,
-              ),
+              LoginButton(username: _username, password: _password),
             ],
           ),
         ),

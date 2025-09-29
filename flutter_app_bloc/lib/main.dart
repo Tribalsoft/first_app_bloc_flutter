@@ -16,9 +16,15 @@ class MainApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         // Proveedor para la gestión de autenticación usando Cubit
-        BlocProvider(create: (_) => AuthCubit()),
+        BlocProvider(
+          create: (_) => AuthCubit(),
+          lazy: true, // Carga perezosa
+        ),
         // Proveedor para la gestión de datos del vehículo
-        BlocProvider(create: (_) => CarBloc()),
+        BlocProvider(
+          create: (_) => CarBloc(),
+          lazy: true, // Carga perezosa
+        ),
       ],
       child: MaterialApp(
         title: 'Demo Flutter BLoC',

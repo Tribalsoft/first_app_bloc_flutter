@@ -11,7 +11,9 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Load car details when screen is created
-    context.read<CarBloc>().add(LoadCarDetails());
+    context.read<CarBloc>().add(
+      LoadAllCars(),
+    ); // Cargamos todos los carros inicialmente
 
     return Scaffold(
       appBar: AppBar(
@@ -21,13 +23,9 @@ class MainScreen extends StatelessWidget {
       body: Column(
         children: [
           // Top half - Car Image
-          const Expanded(
-            child: CarImageWidget(),
-          ),
+          const Expanded(child: CarImageWidget()),
           // Bottom half - Car Details
-          const Expanded(
-            child: CarDetailsWidget(),
-          ),
+          const Expanded(child: CarDetailsWidget()),
         ],
       ),
     );
