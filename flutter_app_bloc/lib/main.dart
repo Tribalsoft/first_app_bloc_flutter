@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'bloc/auth_bloc.dart';
+import 'cubit/auth_cubit.dart';
 import 'bloc/car_bloc.dart';
 import 'screens/login_screen.dart';
 
@@ -15,8 +15,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        // Proveedor para la gestión de autenticación
-        BlocProvider(create: (_) => AuthBloc()),
+        // Proveedor para la gestión de autenticación usando Cubit
+        BlocProvider(create: (_) => AuthCubit()),
         // Proveedor para la gestión de datos del vehículo
         BlocProvider(create: (_) => CarBloc()),
       ],
