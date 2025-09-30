@@ -1,40 +1,46 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'auth_state.dart';
+import '../services/auth_api_service.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(AuthInitial());
+  final AuthApiService _authService;
   bool _mounted = true;
+
+  AuthCubit(this._authService) : super(AuthInitial());
 
   @override
   Future<void> close() {
     _mounted = false;
+    _authService.dispose();
     return super.close();
   }
 
-  Future<void> login(String username, String password) async {
+  Future<void> login(String email, String password) async {
     // Evita emisiones duplicadas verificando el estado actual
     if (state is AuthLoading) return;
 
     emit(AuthLoading());
 
     try {
-      await Future.delayed(const Duration(seconds: 2));
-
+      final user = await _authService.login(email, password);
+      
       if (!_mounted) return; // Evita emisiones si el cubit está cerrado
 
-      if (username == 'error') {
-        emit(const AuthError('Credenciales inválidas'));
+      if (user != null) {
+        emit(AuthSuccess(user));
       } else {
-        final currentState = state;
-        if (currentState is! AuthSuccess) {
-          // Evita emisiones duplicadas
-          emit(AuthSuccess());
-        }
+        emit(const AuthError('Error de autenticación'));
       }
     } catch (e) {
       if (_mounted) {
-        emit(const AuthError('Error inesperado durante el login'));
+        emit(AuthError(e.toString().replaceFirst('Exception: ', '')));
       }
+    }
+  }
+
+  void logout() {
+    if (_mounted) {
+      emit(AuthInitial());
     }
   }
 }

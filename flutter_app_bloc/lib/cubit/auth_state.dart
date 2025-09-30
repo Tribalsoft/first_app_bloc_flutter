@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import '../models/user.dart';
 
 abstract class AuthState extends Equatable {
   const AuthState();
@@ -17,7 +18,15 @@ class AuthLoading extends AuthState {}
 
 /// Estado que indica que la autenticación fue exitosa.
 /// Desencadena la navegación a la pantalla principal.
-class AuthSuccess extends AuthState {}
+class AuthSuccess extends AuthState {
+  /// Usuario autenticado
+  final User user;
+  
+  const AuthSuccess(this.user);
+  
+  @override
+  List<Object?> get props => [user];
+}
 
 /// Estado que indica que ocurrió un error durante la autenticación.
 /// Contiene un mensaje de error para mostrar al usuario.

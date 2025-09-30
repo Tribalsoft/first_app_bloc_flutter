@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/auth_cubit.dart';
 import 'bloc/user_bloc.dart';
 import 'services/user_api_service.dart';
+import 'services/auth_api_service.dart';
 import 'screens/login_screen.dart';
 
 void main() {
@@ -14,14 +15,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Creamos una única instancia del servicio
+    // Creamos instancias únicas de los servicios
     final userService = UserApiService();
+    final authService = AuthApiService();
 
     return MultiBlocProvider(
       providers: [
         // Proveedor para la gestión de autenticación usando Cubit
         BlocProvider(
-          create: (_) => AuthCubit(),
+          create: (_) => AuthCubit(authService),
           lazy: true, // Carga perezosa
         ),
         // Proveedor para la gestión de usuarios

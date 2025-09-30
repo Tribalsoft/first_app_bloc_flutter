@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/auth_cubit.dart';
 import '../cubit/auth_state.dart';
 import '../widgets/login_text_field.dart';
-import '../widgets/login_debug_values.dart';
+import '../widgets/available_emails_widget.dart';
 import '../widgets/login_button.dart';
 import 'main_screen.dart';
 
@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onChanged: (value) => setState(() => _password = value),
               ),
               const SizedBox(height: 24),
-              LoginDebugValues(username: _username, password: _password),
+              const AvailableEmailsWidget(),
               const SizedBox(height: 24),
               LoginButton(username: _username, password: _password),
             ],
