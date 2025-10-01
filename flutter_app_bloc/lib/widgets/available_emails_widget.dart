@@ -55,7 +55,7 @@ class _AvailableEmailsWidgetState extends State<AvailableEmailsWidget> {
               Icon(Icons.info_outline, color: Colors.green, size: 20),
               SizedBox(width: 8),
               Text(
-                'Credenciales válidas para prueba:',
+                'Credenciales de prueba:',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.green,
