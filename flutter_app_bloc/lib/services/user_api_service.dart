@@ -10,6 +10,9 @@ class UserApiService {
 
   Future<List<User>> getAllUsers() async {
     try {
+      // Agregar delay para simular carga de datos desde servidor
+      await Future.delayed(const Duration(seconds: 2, milliseconds: 500));
+      
       final response = await _client
           .get(
             Uri.parse('${ApiConfig.baseUrl}${ApiConfig.users}'),
@@ -35,6 +38,9 @@ class UserApiService {
 
   Future<User> getUserDetails(int id) async {
     try {
+      // Agregar delay para simular carga de detalles de usuario
+      await Future.delayed(const Duration(milliseconds: 1200));
+      
       final response = await _client
           .get(
             Uri.parse('${ApiConfig.baseUrl}${ApiConfig.users}/$id'),

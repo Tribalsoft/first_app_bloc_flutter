@@ -19,6 +19,9 @@ class AuthApiService {
     try {
       print('🔐 Intentando login con email: $email');
       
+      // Agregar delay para simular proceso de autenticación más realista
+      await Future.delayed(const Duration(seconds: 3, milliseconds: 500));
+      
       // Simulamos autenticación usando el endpoint de usuarios
       // En un API real, esto sería un endpoint POST /auth/login
       final response = await _client.get(
@@ -50,12 +53,12 @@ class AuthApiService {
 
         // Simulamos validación de password
         // En un API real, esto se haría en el servidor
-        if (password == 'password123') {
+        if (password == 'wil1122') {
           print('✅ Contraseña válida');
           return foundUser;
         } else {
           print('❌ Contraseña inválida: $password');
-          throw Exception('Contraseña incorrecta. Usa: password123');
+          throw Exception('Contraseña incorrecta. Usa: wil1122');
         }
       } else {
         throw Exception('Error del servidor: ${response.statusCode}');
@@ -77,6 +80,9 @@ class AuthApiService {
 
   Future<List<String>> getAvailableEmails() async {
     try {
+      // Agregar delay para mostrar loading de emails
+      await Future.delayed(const Duration(milliseconds: 1500));
+      
       final response = await _client.get(
         Uri.parse('${ApiConfig.baseUrl}${ApiConfig.users}'),
         headers: ApiConfig.headers,
@@ -97,7 +103,7 @@ class AuthApiService {
     try {
       // Simulamos validación de token
       // En un API real, esto sería un endpoint para validar el JWT
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 1000));
       return token.isNotEmpty && token.length > 10;
     } catch (e) {
       return false;

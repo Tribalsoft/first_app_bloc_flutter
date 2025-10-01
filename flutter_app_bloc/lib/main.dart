@@ -5,6 +5,7 @@ import 'bloc/user_bloc.dart';
 import 'services/user_api_service.dart';
 import 'services/auth_api_service.dart';
 import 'screens/login_screen.dart';
+// import 'widgets/app_loading_widget.dart'; // Para usar AppLoadingWidget si necesitas una pantalla de splash
 
 void main() {
   runApp(const MainApp());
@@ -39,6 +40,19 @@ class MainApp extends StatelessWidget {
           useMaterial3: true, // Habilita Material Design 3
         ),
         home: const LoginScreen(), // Pantalla inicial de login
+        
+        // Para mostrar una pantalla de loading inicial, puedes usar:
+        // home: FutureBuilder(
+        //   future: _initializeApp(),
+        //   builder: (context, snapshot) {
+        //     if (snapshot.connectionState == ConnectionState.waiting) {
+        //       return const AppLoadingWidget(
+        //         message: 'Cargando aplicación...',
+        //       );
+        //     }
+        //     return const LoginScreen();
+        //   },
+        // ),
       ),
     );
   }

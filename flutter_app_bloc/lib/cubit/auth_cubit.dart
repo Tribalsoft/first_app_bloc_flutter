@@ -25,7 +25,7 @@ class AuthCubit extends Cubit<AuthState> {
       final user = await _authService.login(email, password);
       
       // Agregamos un delay adicional para mostrar el indicador de carga más tiempo
-      await Future.delayed(const Duration(milliseconds: 1500));
+      await Future.delayed(const Duration(milliseconds: 2000));
       
       if (!_mounted) return; // Evita emisiones si el cubit está cerrado
 

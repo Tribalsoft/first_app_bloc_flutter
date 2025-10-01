@@ -21,6 +21,10 @@ class _AvailableEmailsWidgetState extends State<AvailableEmailsWidget> {
   Future<void> _loadEmails() async {
     try {
       final authService = AuthApiService();
+      
+      // Agregar delay para mostrar el loading más tiempo
+      await Future.delayed(const Duration(seconds: 3));
+      
       final emails = await authService.getAvailableEmails();
       if (mounted) {
         setState(() {
@@ -65,16 +69,44 @@ class _AvailableEmailsWidgetState extends State<AvailableEmailsWidget> {
           ),
           const SizedBox(height: 12),
           if (_loading)
-            const Row(
-              children: [
-                SizedBox(
-                  width: 16,
-                  height: 16,
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                ),
-                SizedBox(width: 8),
-                Text('Cargando emails disponibles...'),
-              ],
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: const Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2.5,
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                    ),
+                  ),
+                  SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Cargando emails disponibles...',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.green,
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Consultando API de usuarios',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             )
           else if (_emails.isEmpty)
             const Text(
@@ -113,7 +145,7 @@ class _AvailableEmailsWidgetState extends State<AvailableEmailsWidget> {
           ],
           const SizedBox(height: 12),
           const Text(
-            '🔑 Contraseña: password123',
+            '🔑 Contraseña: wil1122',
             style: TextStyle(
               fontWeight: FontWeight.w600,
               color: Colors.green,
