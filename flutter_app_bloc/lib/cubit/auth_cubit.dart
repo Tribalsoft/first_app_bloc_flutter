@@ -24,6 +24,9 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final user = await _authService.login(email, password);
       
+      // Agregamos un delay adicional para mostrar el indicador de carga más tiempo
+      await Future.delayed(const Duration(milliseconds: 1500));
+      
       if (!_mounted) return; // Evita emisiones si el cubit está cerrado
 
       if (user != null) {
@@ -32,6 +35,9 @@ class AuthCubit extends Cubit<AuthState> {
         emit(const AuthError('Error de autenticación'));
       }
     } catch (e) {
+      // También agregamos delay en caso de error para consistencia
+      await Future.delayed(const Duration(milliseconds: 1000));
+      
       if (_mounted) {
         emit(AuthError(e.toString().replaceFirst('Exception: ', '')));
       }

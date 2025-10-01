@@ -15,7 +15,7 @@ class MainScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard Principal'),
+        title: const Text('Principal'),
         automaticallyImplyLeading: false,
       ),
       body: Column(

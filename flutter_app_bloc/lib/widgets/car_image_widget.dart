@@ -52,7 +52,7 @@ class CarImageWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Vehículo Destacado',
+                  'Tesla Model 3',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class CarImageWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Tesla Model 3 - Tecnología de vanguardia',
+                  'Sedan Eléctrico',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Colors.white70,
                   ),
